@@ -1,0 +1,1570 @@
+[
+  {
+    "name": "Afghanistan",
+    "code": "AF",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "flag": "assets/flags/af.svg",
+    "fact": "Afghanistan's capital is Kabul."
+  },
+  {
+    "name": "Albania",
+    "code": "AL",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "flag": "assets/flags/al.svg",
+    "fact": "Albania's capital is Tirana."
+  },
+  {
+    "name": "Algeria",
+    "code": "DZ",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "flag": "assets/flags/dz.svg",
+    "fact": "Algeria's capital is Algiers."
+  },
+  {
+    "name": "Andorra",
+    "code": "AD",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "flag": "assets/flags/ad.svg",
+    "fact": "Andorra's capital is Andorra la Vella."
+  },
+  {
+    "name": "Angola",
+    "code": "AO",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/ao.svg",
+    "fact": "Angola's capital is Luanda."
+  },
+  {
+    "name": "Antigua and Barbuda",
+    "code": "AG",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/ag.svg",
+    "fact": "Antigua and Barbuda's capital is Saint John's."
+  },
+  {
+    "name": "Argentina",
+    "code": "AR",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/ar.svg",
+    "fact": "Argentina's capital is Buenos Aires."
+  },
+  {
+    "name": "Armenia",
+    "code": "AM",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/am.svg",
+    "fact": "Armenia's capital is Yerevan."
+  },
+  {
+    "name": "Australia",
+    "code": "AU",
+    "region": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "flag": "assets/flags/au.svg",
+    "fact": "Australia's capital is Canberra."
+  },
+  {
+    "name": "Austria",
+    "code": "AT",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "flag": "assets/flags/at.svg",
+    "fact": "Austria's capital is Vienna."
+  },
+  {
+    "name": "Azerbaijan",
+    "code": "AZ",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/az.svg",
+    "fact": "Azerbaijan's capital is Baku."
+  },
+  {
+    "name": "Bahamas",
+    "code": "BS",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/bs.svg",
+    "fact": "Bahamas's capital is Nassau."
+  },
+  {
+    "name": "Bahrain",
+    "code": "BH",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/bh.svg",
+    "fact": "Bahrain's capital is Manama."
+  },
+  {
+    "name": "Bangladesh",
+    "code": "BD",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "flag": "assets/flags/bd.svg",
+    "fact": "Bangladesh's capital is Dhaka."
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/bb.svg",
+    "fact": "Barbados's capital is Bridgetown."
+  },
+  {
+    "name": "Belarus",
+    "code": "BY",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "flag": "assets/flags/by.svg",
+    "fact": "Belarus's capital is Minsk."
+  },
+  {
+    "name": "Belgium",
+    "code": "BE",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "assets/flags/be.svg",
+    "fact": "Belgium's capital is Brussels."
+  },
+  {
+    "name": "Belize",
+    "code": "BZ",
+    "region": "Americas",
+    "subregion": "Central America",
+    "flag": "assets/flags/bz.svg",
+    "fact": "Belize's capital is Belmopan."
+  },
+  {
+    "name": "Benin",
+    "code": "BJ",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/bj.svg",
+    "fact": "Benin's capital is Porto-Novo."
+  },
+  {
+    "name": "Bhutan",
+    "code": "BT",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "flag": "assets/flags/bt.svg",
+    "fact": "Bhutan's capital is Thimphu."
+  },
+  {
+    "name": "Bolivia",
+    "code": "BO",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/bo.svg",
+    "fact": "Bolivia's capital is Sucre."
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "code": "BA",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "flag": "assets/flags/ba.svg",
+    "fact": "Bosnia and Herzegovina's capital is Sarajevo."
+  },
+  {
+    "name": "Botswana",
+    "code": "BW",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "flag": "assets/flags/bw.svg",
+    "fact": "Botswana's capital is Gaborone."
+  },
+  {
+    "name": "Brazil",
+    "code": "BR",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/br.svg",
+    "fact": "Brazil's capital is Brasília."
+  },
+  {
+    "name": "Brunei",
+    "code": "BN",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/bn.svg",
+    "fact": "Brunei's capital is Bandar Seri Begawan."
+  },
+  {
+    "name": "Bulgaria",
+    "code": "BG",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "flag": "assets/flags/bg.svg",
+    "fact": "Bulgaria's capital is Sofia."
+  },
+  {
+    "name": "Burkina Faso",
+    "code": "BF",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/bf.svg",
+    "fact": "Burkina Faso's capital is Ouagadougou."
+  },
+  {
+    "name": "Burundi",
+    "code": "BI",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/bi.svg",
+    "fact": "Burundi's capital is Gitega."
+  },
+  {
+    "name": "Cabo Verde",
+    "code": "CV",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/cv.svg",
+    "fact": "Cabo Verde's capital is Praia."
+  },
+  {
+    "name": "Cambodia",
+    "code": "KH",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/kh.svg",
+    "fact": "Cambodia's capital is Phnom Penh."
+  },
+  {
+    "name": "Cameroon",
+    "code": "CM",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/cm.svg",
+    "fact": "Cameroon's capital is Yaoundé."
+  },
+  {
+    "name": "Canada",
+    "code": "CA",
+    "region": "Americas",
+    "subregion": "North America",
+    "flag": "assets/flags/ca.svg",
+    "fact": "Canada's capital is Ottawa."
+  },
+  {
+    "name": "Central African Republic",
+    "code": "CF",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/cf.svg",
+    "fact": "Central African Republic's capital is Bangui."
+  },
+  {
+    "name": "Chad",
+    "code": "TD",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/td.svg",
+    "fact": "Chad's capital is N'Djamena."
+  },
+  {
+    "name": "Chile",
+    "code": "CL",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/cl.svg",
+    "fact": "Chile's capital is Santiago."
+  },
+  {
+    "name": "China",
+    "code": "CN",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "flag": "assets/flags/cn.svg",
+    "fact": "China's capital is Beijing."
+  },
+  {
+    "name": "Colombia",
+    "code": "CO",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/co.svg",
+    "fact": "Colombia's capital is Bogotá."
+  },
+  {
+    "name": "Comoros",
+    "code": "KM",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/km.svg",
+    "fact": "Comoros's capital is Moroni."
+  },
+  {
+    "name": "Costa Rica",
+    "code": "CR",
+    "region": "Americas",
+    "subregion": "Central America",
+    "flag": "assets/flags/cr.svg",
+    "fact": "Costa Rica's capital is San José."
+  },
+  {
+    "name": "Cote d'Ivoire",
+    "code": "CI",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/ci.svg",
+    "fact": "Cote d'Ivoire's capital is Yamoussoukro."
+  },
+  {
+    "name": "Croatia",
+    "code": "HR",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "flag": "assets/flags/hr.svg",
+    "fact": "Croatia's capital is Zagreb."
+  },
+  {
+    "name": "Cuba",
+    "code": "CU",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/cu.svg",
+    "fact": "Cuba's capital is Havana."
+  },
+  {
+    "name": "Cyprus",
+    "code": "CY",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "flag": "assets/flags/cy.svg",
+    "fact": "Cyprus's capital is Nicosia."
+  },
+  {
+    "name": "Czechia",
+    "code": "CZ",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "flag": "assets/flags/cz.svg",
+    "fact": "Czechia's capital is Prague."
+  },
+  {
+    "name": "Democratic Republic of the Congo",
+    "code": "CD",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/cd.svg",
+    "fact": "Democratic Republic of the Congo's capital is Kinshasa."
+  },
+  {
+    "name": "Denmark",
+    "code": "DK",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/dk.svg",
+    "fact": "Denmark's capital is Copenhagen."
+  },
+  {
+    "name": "Djibouti",
+    "code": "DJ",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/dj.svg",
+    "fact": "Djibouti's capital is Djibouti."
+  },
+  {
+    "name": "Dominica",
+    "code": "DM",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/dm.svg",
+    "fact": "Dominica's capital is Roseau."
+  },
+  {
+    "name": "Dominican Republic",
+    "code": "DO",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/do.svg",
+    "fact": "Dominican Republic's capital is Santo Domingo."
+  },
+  {
+    "name": "Ecuador",
+    "code": "EC",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/ec.svg",
+    "fact": "Ecuador's capital is Quito."
+  },
+  {
+    "name": "Egypt",
+    "code": "EG",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "flag": "assets/flags/eg.svg",
+    "fact": "Egypt's capital is Cairo."
+  },
+  {
+    "name": "El Salvador",
+    "code": "SV",
+    "region": "Americas",
+    "subregion": "Central America",
+    "flag": "assets/flags/sv.svg",
+    "fact": "El Salvador's capital is San Salvador."
+  },
+  {
+    "name": "Equatorial Guinea",
+    "code": "GQ",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/gq.svg",
+    "fact": "Equatorial Guinea's capital is Ciudad de la Paz."
+  },
+  {
+    "name": "Eritrea",
+    "code": "ER",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/er.svg",
+    "fact": "Eritrea's capital is Asmara."
+  },
+  {
+    "name": "Estonia",
+    "code": "EE",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/ee.svg",
+    "fact": "Estonia's capital is Tallinn."
+  },
+  {
+    "name": "Eswatini",
+    "code": "SZ",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "flag": "assets/flags/sz.svg",
+    "fact": "Eswatini's capital is Mbabane."
+  },
+  {
+    "name": "Ethiopia",
+    "code": "ET",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/et.svg",
+    "fact": "Ethiopia's capital is Addis Ababa."
+  },
+  {
+    "name": "Fiji",
+    "code": "FJ",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "flag": "assets/flags/fj.svg",
+    "fact": "Fiji's capital is Suva."
+  },
+  {
+    "name": "Finland",
+    "code": "FI",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/fi.svg",
+    "fact": "Finland's capital is Helsinki."
+  },
+  {
+    "name": "France",
+    "code": "FR",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "assets/flags/fr.svg",
+    "fact": "France's capital is Paris."
+  },
+  {
+    "name": "Gabon",
+    "code": "GA",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/ga.svg",
+    "fact": "Gabon's capital is Libreville."
+  },
+  {
+    "name": "Gambia",
+    "code": "GM",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/gm.svg",
+    "fact": "Gambia's capital is Banjul."
+  },
+  {
+    "name": "Georgia",
+    "code": "GE",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/ge.svg",
+    "fact": "Georgia's capital is Tbilisi."
+  },
+  {
+    "name": "Germany",
+    "code": "DE",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "assets/flags/de.svg",
+    "fact": "Germany's capital is Berlin."
+  },
+  {
+    "name": "Ghana",
+    "code": "GH",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/gh.svg",
+    "fact": "Ghana's capital is Accra."
+  },
+  {
+    "name": "Greece",
+    "code": "GR",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "flag": "assets/flags/gr.svg",
+    "fact": "Greece's capital is Athens."
+  },
+  {
+    "name": "Grenada",
+    "code": "GD",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/gd.svg",
+    "fact": "Grenada's capital is St. George's."
+  },
+  {
+    "name": "Guatemala",
+    "code": "GT",
+    "region": "Americas",
+    "subregion": "Central America",
+    "flag": "assets/flags/gt.svg",
+    "fact": "Guatemala's capital is Guatemala City."
+  },
+  {
+    "name": "Guinea",
+    "code": "GN",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/gn.svg",
+    "fact": "Guinea's capital is Conakry."
+  },
+  {
+    "name": "Guinea-Bissau",
+    "code": "GW",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/gw.svg",
+    "fact": "Guinea-Bissau's capital is Bissau."
+  },
+  {
+    "name": "Guyana",
+    "code": "GY",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/gy.svg",
+    "fact": "Guyana's capital is Georgetown."
+  },
+  {
+    "name": "Haiti",
+    "code": "HT",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/ht.svg",
+    "fact": "Haiti's capital is Port-au-Prince."
+  },
+  {
+    "name": "Honduras",
+    "code": "HN",
+    "region": "Americas",
+    "subregion": "Central America",
+    "flag": "assets/flags/hn.svg",
+    "fact": "Honduras's capital is Tegucigalpa."
+  },
+  {
+    "name": "Hungary",
+    "code": "HU",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "flag": "assets/flags/hu.svg",
+    "fact": "Hungary's capital is Budapest."
+  },
+  {
+    "name": "Iceland",
+    "code": "IS",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/is.svg",
+    "fact": "Iceland's capital is Reykjavik."
+  },
+  {
+    "name": "India",
+    "code": "IN",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "flag": "assets/flags/in.svg",
+    "fact": "India's capital is New Delhi."
+  },
+  {
+    "name": "Indonesia",
+    "code": "ID",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/id.svg",
+    "fact": "Indonesia's capital is Jakarta."
+  },
+  {
+    "name": "Iran",
+    "code": "IR",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "flag": "assets/flags/ir.svg",
+    "fact": "Iran's capital is Tehran."
+  },
+  {
+    "name": "Iraq",
+    "code": "IQ",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/iq.svg",
+    "fact": "Iraq's capital is Baghdad."
+  },
+  {
+    "name": "Ireland",
+    "code": "IE",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/ie.svg",
+    "fact": "Ireland's capital is Dublin."
+  },
+  {
+    "name": "Israel",
+    "code": "IL",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/il.svg",
+    "fact": "Israel's capital is Jerusalem."
+  },
+  {
+    "name": "Italy",
+    "code": "IT",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "flag": "assets/flags/it.svg",
+    "fact": "Italy's capital is Rome."
+  },
+  {
+    "name": "Jamaica",
+    "code": "JM",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/jm.svg",
+    "fact": "Jamaica's capital is Kingston."
+  },
+  {
+    "name": "Japan",
+    "code": "JP",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "flag": "assets/flags/jp.svg",
+    "fact": "Japan's capital is Tokyo."
+  },
+  {
+    "name": "Jordan",
+    "code": "JO",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/jo.svg",
+    "fact": "Jordan's capital is Amman."
+  },
+  {
+    "name": "Kazakhstan",
+    "code": "KZ",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "flag": "assets/flags/kz.svg",
+    "fact": "Kazakhstan's capital is Astana."
+  },
+  {
+    "name": "Kenya",
+    "code": "KE",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/ke.svg",
+    "fact": "Kenya's capital is Nairobi."
+  },
+  {
+    "name": "Kiribati",
+    "code": "KI",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "flag": "assets/flags/ki.svg",
+    "fact": "Kiribati's capital is South Tarawa."
+  },
+  {
+    "name": "Kosovo",
+    "code": "XK",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "flag": "assets/flags/xk.svg",
+    "fact": "Kosovo's capital is Pristina."
+  },
+  {
+    "name": "Kuwait",
+    "code": "KW",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/kw.svg",
+    "fact": "Kuwait's capital is Kuwait City."
+  },
+  {
+    "name": "Kyrgyzstan",
+    "code": "KG",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "flag": "assets/flags/kg.svg",
+    "fact": "Kyrgyzstan's capital is Bishkek."
+  },
+  {
+    "name": "Laos",
+    "code": "LA",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/la.svg",
+    "fact": "Laos's capital is Vientiane."
+  },
+  {
+    "name": "Latvia",
+    "code": "LV",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/lv.svg",
+    "fact": "Latvia's capital is Riga."
+  },
+  {
+    "name": "Lebanon",
+    "code": "LB",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/lb.svg",
+    "fact": "Lebanon's capital is Beirut."
+  },
+  {
+    "name": "Lesotho",
+    "code": "LS",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "flag": "assets/flags/ls.svg",
+    "fact": "Lesotho's capital is Maseru."
+  },
+  {
+    "name": "Liberia",
+    "code": "LR",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/lr.svg",
+    "fact": "Liberia's capital is Monrovia."
+  },
+  {
+    "name": "Libya",
+    "code": "LY",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "flag": "assets/flags/ly.svg",
+    "fact": "Libya's capital is Tripoli."
+  },
+  {
+    "name": "Liechtenstein",
+    "code": "LI",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "assets/flags/li.svg",
+    "fact": "Liechtenstein's capital is Vaduz."
+  },
+  {
+    "name": "Lithuania",
+    "code": "LT",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/lt.svg",
+    "fact": "Lithuania's capital is Vilnius."
+  },
+  {
+    "name": "Luxembourg",
+    "code": "LU",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "assets/flags/lu.svg",
+    "fact": "Luxembourg's capital is Luxembourg."
+  },
+  {
+    "name": "Madagascar",
+    "code": "MG",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/mg.svg",
+    "fact": "Madagascar's capital is Antananarivo."
+  },
+  {
+    "name": "Malawi",
+    "code": "MW",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/mw.svg",
+    "fact": "Malawi's capital is Lilongwe."
+  },
+  {
+    "name": "Malaysia",
+    "code": "MY",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/my.svg",
+    "fact": "Malaysia's capital is Kuala Lumpur."
+  },
+  {
+    "name": "Maldives",
+    "code": "MV",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "flag": "assets/flags/mv.svg",
+    "fact": "Maldives's capital is Malé."
+  },
+  {
+    "name": "Mali",
+    "code": "ML",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/ml.svg",
+    "fact": "Mali's capital is Bamako."
+  },
+  {
+    "name": "Malta",
+    "code": "MT",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "flag": "assets/flags/mt.svg",
+    "fact": "Malta's capital is Valletta."
+  },
+  {
+    "name": "Marshall Islands",
+    "code": "MH",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "flag": "assets/flags/mh.svg",
+    "fact": "Marshall Islands's capital is Majuro."
+  },
+  {
+    "name": "Mauritania",
+    "code": "MR",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/mr.svg",
+    "fact": "Mauritania's capital is Nouakchott."
+  },
+  {
+    "name": "Mauritius",
+    "code": "MU",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/mu.svg",
+    "fact": "Mauritius's capital is Port Louis."
+  },
+  {
+    "name": "Mexico",
+    "code": "MX",
+    "region": "Americas",
+    "subregion": "North America",
+    "flag": "assets/flags/mx.svg",
+    "fact": "Mexico's capital is Mexico City."
+  },
+  {
+    "name": "Micronesia",
+    "code": "FM",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "flag": "assets/flags/fm.svg",
+    "fact": "Micronesia's capital is Palikir."
+  },
+  {
+    "name": "Moldova",
+    "code": "MD",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "flag": "assets/flags/md.svg",
+    "fact": "Moldova's capital is Chișinău."
+  },
+  {
+    "name": "Monaco",
+    "code": "MC",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "assets/flags/mc.svg",
+    "fact": "Monaco's capital is Monaco."
+  },
+  {
+    "name": "Mongolia",
+    "code": "MN",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "flag": "assets/flags/mn.svg",
+    "fact": "Mongolia's capital is Ulan Bator."
+  },
+  {
+    "name": "Montenegro",
+    "code": "ME",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "flag": "assets/flags/me.svg",
+    "fact": "Montenegro's capital is Podgorica."
+  },
+  {
+    "name": "Morocco",
+    "code": "MA",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "flag": "assets/flags/ma.svg",
+    "fact": "Morocco's capital is Rabat."
+  },
+  {
+    "name": "Mozambique",
+    "code": "MZ",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/mz.svg",
+    "fact": "Mozambique's capital is Maputo."
+  },
+  {
+    "name": "Myanmar",
+    "code": "MM",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/mm.svg",
+    "fact": "Myanmar's capital is Naypyidaw."
+  },
+  {
+    "name": "Namibia",
+    "code": "NA",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "flag": "assets/flags/na.svg",
+    "fact": "Namibia's capital is Windhoek."
+  },
+  {
+    "name": "Nauru",
+    "code": "NR",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "flag": "assets/flags/nr.svg",
+    "fact": "Nauru's capital is Yaren."
+  },
+  {
+    "name": "Nepal",
+    "code": "NP",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "flag": "assets/flags/np.svg",
+    "fact": "Nepal's capital is Kathmandu."
+  },
+  {
+    "name": "Netherlands",
+    "code": "NL",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "assets/flags/nl.svg",
+    "fact": "Netherlands's capital is Amsterdam."
+  },
+  {
+    "name": "New Zealand",
+    "code": "NZ",
+    "region": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "flag": "assets/flags/nz.svg",
+    "fact": "New Zealand's capital is Wellington."
+  },
+  {
+    "name": "Nicaragua",
+    "code": "NI",
+    "region": "Americas",
+    "subregion": "Central America",
+    "flag": "assets/flags/ni.svg",
+    "fact": "Nicaragua's capital is Managua."
+  },
+  {
+    "name": "Niger",
+    "code": "NE",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/ne.svg",
+    "fact": "Niger's capital is Niamey."
+  },
+  {
+    "name": "Nigeria",
+    "code": "NG",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/ng.svg",
+    "fact": "Nigeria's capital is Abuja."
+  },
+  {
+    "name": "North Korea",
+    "code": "KP",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "flag": "assets/flags/kp.svg",
+    "fact": "North Korea's capital is Pyongyang."
+  },
+  {
+    "name": "North Macedonia",
+    "code": "MK",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "flag": "assets/flags/mk.svg",
+    "fact": "North Macedonia's capital is Skopje."
+  },
+  {
+    "name": "Norway",
+    "code": "NO",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/no.svg",
+    "fact": "Norway's capital is Oslo."
+  },
+  {
+    "name": "Oman",
+    "code": "OM",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/om.svg",
+    "fact": "Oman's capital is Muscat."
+  },
+  {
+    "name": "Pakistan",
+    "code": "PK",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "flag": "assets/flags/pk.svg",
+    "fact": "Pakistan's capital is Islamabad."
+  },
+  {
+    "name": "Palau",
+    "code": "PW",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "flag": "assets/flags/pw.svg",
+    "fact": "Palau's capital is Ngerulmud."
+  },
+  {
+    "name": "Palestine",
+    "code": "PS",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/ps.svg",
+    "fact": "Palestine's capital is Ramallah."
+  },
+  {
+    "name": "Panama",
+    "code": "PA",
+    "region": "Americas",
+    "subregion": "Central America",
+    "flag": "assets/flags/pa.svg",
+    "fact": "Panama's capital is Panama City."
+  },
+  {
+    "name": "Papua New Guinea",
+    "code": "PG",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "flag": "assets/flags/pg.svg",
+    "fact": "Papua New Guinea's capital is Port Moresby."
+  },
+  {
+    "name": "Paraguay",
+    "code": "PY",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/py.svg",
+    "fact": "Paraguay's capital is Asunción."
+  },
+  {
+    "name": "Peru",
+    "code": "PE",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/pe.svg",
+    "fact": "Peru's capital is Lima."
+  },
+  {
+    "name": "Philippines",
+    "code": "PH",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/ph.svg",
+    "fact": "Philippines's capital is Manila."
+  },
+  {
+    "name": "Poland",
+    "code": "PL",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "flag": "assets/flags/pl.svg",
+    "fact": "Poland's capital is Warsaw."
+  },
+  {
+    "name": "Portugal",
+    "code": "PT",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "flag": "assets/flags/pt.svg",
+    "fact": "Portugal's capital is Lisbon."
+  },
+  {
+    "name": "Qatar",
+    "code": "QA",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/qa.svg",
+    "fact": "Qatar's capital is Doha."
+  },
+  {
+    "name": "Republic of the Congo",
+    "code": "CG",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/cg.svg",
+    "fact": "Republic of the Congo's capital is Brazzaville."
+  },
+  {
+    "name": "Romania",
+    "code": "RO",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "flag": "assets/flags/ro.svg",
+    "fact": "Romania's capital is Bucharest."
+  },
+  {
+    "name": "Russia",
+    "code": "RU",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "flag": "assets/flags/ru.svg",
+    "fact": "Russia's capital is Moscow."
+  },
+  {
+    "name": "Rwanda",
+    "code": "RW",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/rw.svg",
+    "fact": "Rwanda's capital is Kigali."
+  },
+  {
+    "name": "Saint Kitts and Nevis",
+    "code": "KN",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/kn.svg",
+    "fact": "Saint Kitts and Nevis's capital is Basseterre."
+  },
+  {
+    "name": "Saint Lucia",
+    "code": "LC",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/lc.svg",
+    "fact": "Saint Lucia's capital is Castries."
+  },
+  {
+    "name": "Saint Vincent and the Grenadines",
+    "code": "VC",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/vc.svg",
+    "fact": "Saint Vincent and the Grenadines's capital is Kingstown."
+  },
+  {
+    "name": "Samoa",
+    "code": "WS",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "flag": "assets/flags/ws.svg",
+    "fact": "Samoa's capital is Apia."
+  },
+  {
+    "name": "San Marino",
+    "code": "SM",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "flag": "assets/flags/sm.svg",
+    "fact": "San Marino's capital is City of San Marino."
+  },
+  {
+    "name": "São Tomé and Príncipe",
+    "code": "ST",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/st.svg",
+    "fact": "São Tomé and Príncipe's capital is São Tomé."
+  },
+  {
+    "name": "Saudi Arabia",
+    "code": "SA",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/sa.svg",
+    "fact": "Saudi Arabia's capital is Riyadh."
+  },
+  {
+    "name": "Senegal",
+    "code": "SN",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/sn.svg",
+    "fact": "Senegal's capital is Dakar."
+  },
+  {
+    "name": "Serbia",
+    "code": "RS",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "flag": "assets/flags/rs.svg",
+    "fact": "Serbia's capital is Belgrade."
+  },
+  {
+    "name": "Seychelles",
+    "code": "SC",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/sc.svg",
+    "fact": "Seychelles's capital is Victoria."
+  },
+  {
+    "name": "Sierra Leone",
+    "code": "SL",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/sl.svg",
+    "fact": "Sierra Leone's capital is Freetown."
+  },
+  {
+    "name": "Singapore",
+    "code": "SG",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/sg.svg",
+    "fact": "Singapore's capital is Singapore."
+  },
+  {
+    "name": "Slovakia",
+    "code": "SK",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "flag": "assets/flags/sk.svg",
+    "fact": "Slovakia's capital is Bratislava."
+  },
+  {
+    "name": "Slovenia",
+    "code": "SI",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "flag": "assets/flags/si.svg",
+    "fact": "Slovenia's capital is Ljubljana."
+  },
+  {
+    "name": "Solomon Islands",
+    "code": "SB",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "flag": "assets/flags/sb.svg",
+    "fact": "Solomon Islands's capital is Honiara."
+  },
+  {
+    "name": "Somalia",
+    "code": "SO",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/so.svg",
+    "fact": "Somalia's capital is Mogadishu."
+  },
+  {
+    "name": "South Africa",
+    "code": "ZA",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "flag": "assets/flags/za.svg",
+    "fact": "South Africa's capital is Pretoria."
+  },
+  {
+    "name": "South Korea",
+    "code": "KR",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "flag": "assets/flags/kr.svg",
+    "fact": "South Korea's capital is Seoul."
+  },
+  {
+    "name": "South Sudan",
+    "code": "SS",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "flag": "assets/flags/ss.svg",
+    "fact": "South Sudan's capital is Juba."
+  },
+  {
+    "name": "Spain",
+    "code": "ES",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "flag": "assets/flags/es.svg",
+    "fact": "Spain's capital is Madrid."
+  },
+  {
+    "name": "Sri Lanka",
+    "code": "LK",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "flag": "assets/flags/lk.svg",
+    "fact": "Sri Lanka's capital is Sri Jayawardenepura Kotte."
+  },
+  {
+    "name": "Sudan",
+    "code": "SD",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "flag": "assets/flags/sd.svg",
+    "fact": "Sudan's capital is Khartoum."
+  },
+  {
+    "name": "Suriname",
+    "code": "SR",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/sr.svg",
+    "fact": "Suriname's capital is Paramaribo."
+  },
+  {
+    "name": "Sweden",
+    "code": "SE",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/se.svg",
+    "fact": "Sweden's capital is Stockholm."
+  },
+  {
+    "name": "Switzerland",
+    "code": "CH",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "flag": "assets/flags/ch.svg",
+    "fact": "Switzerland's capital is Bern."
+  },
+  {
+    "name": "Syria",
+    "code": "SY",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/sy.svg",
+    "fact": "Syria's capital is Damascus."
+  },
+  {
+    "name": "Tajikistan",
+    "code": "TJ",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "flag": "assets/flags/tj.svg",
+    "fact": "Tajikistan's capital is Dushanbe."
+  },
+  {
+    "name": "Tanzania",
+    "code": "TZ",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/tz.svg",
+    "fact": "Tanzania's capital is Dodoma."
+  },
+  {
+    "name": "Thailand",
+    "code": "TH",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/th.svg",
+    "fact": "Thailand's capital is Bangkok."
+  },
+  {
+    "name": "Timor-Leste",
+    "code": "TL",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/tl.svg",
+    "fact": "Timor-Leste's capital is Dili."
+  },
+  {
+    "name": "Togo",
+    "code": "TG",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "flag": "assets/flags/tg.svg",
+    "fact": "Togo's capital is Lomé."
+  },
+  {
+    "name": "Tonga",
+    "code": "TO",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "flag": "assets/flags/to.svg",
+    "fact": "Tonga's capital is Nuku'alofa."
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "code": "TT",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "flag": "assets/flags/tt.svg",
+    "fact": "Trinidad and Tobago's capital is Port of Spain."
+  },
+  {
+    "name": "Tunisia",
+    "code": "TN",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "flag": "assets/flags/tn.svg",
+    "fact": "Tunisia's capital is Tunis."
+  },
+  {
+    "name": "Turkiye",
+    "code": "TR",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/tr.svg",
+    "fact": "Turkiye's capital is Ankara."
+  },
+  {
+    "name": "Turkmenistan",
+    "code": "TM",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "flag": "assets/flags/tm.svg",
+    "fact": "Turkmenistan's capital is Ashgabat."
+  },
+  {
+    "name": "Tuvalu",
+    "code": "TV",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "flag": "assets/flags/tv.svg",
+    "fact": "Tuvalu's capital is Funafuti."
+  },
+  {
+    "name": "Uganda",
+    "code": "UG",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/ug.svg",
+    "fact": "Uganda's capital is Kampala."
+  },
+  {
+    "name": "Ukraine",
+    "code": "UA",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "flag": "assets/flags/ua.svg",
+    "fact": "Ukraine's capital is Kyiv."
+  },
+  {
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/ae.svg",
+    "fact": "United Arab Emirates's capital is Abu Dhabi."
+  },
+  {
+    "name": "United Kingdom",
+    "code": "GB",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "flag": "assets/flags/gb.svg",
+    "fact": "United Kingdom's capital is London."
+  },
+  {
+    "name": "United States",
+    "code": "US",
+    "region": "Americas",
+    "subregion": "North America",
+    "flag": "assets/flags/us.svg",
+    "fact": "United States's capital is Washington, D.C.."
+  },
+  {
+    "name": "Uruguay",
+    "code": "UY",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/uy.svg",
+    "fact": "Uruguay's capital is Montevideo."
+  },
+  {
+    "name": "Uzbekistan",
+    "code": "UZ",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "flag": "assets/flags/uz.svg",
+    "fact": "Uzbekistan's capital is Tashkent."
+  },
+  {
+    "name": "Vanuatu",
+    "code": "VU",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "flag": "assets/flags/vu.svg",
+    "fact": "Vanuatu's capital is Port Vila."
+  },
+  {
+    "name": "Vatican City",
+    "code": "VA",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "flag": "assets/flags/va.svg",
+    "fact": "Vatican City's capital is Vatican City."
+  },
+  {
+    "name": "Venezuela",
+    "code": "VE",
+    "region": "Americas",
+    "subregion": "South America",
+    "flag": "assets/flags/ve.svg",
+    "fact": "Venezuela's capital is Caracas."
+  },
+  {
+    "name": "Vietnam",
+    "code": "VN",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "flag": "assets/flags/vn.svg",
+    "fact": "Vietnam's capital is Hanoi."
+  },
+  {
+    "name": "Yemen",
+    "code": "YE",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "flag": "assets/flags/ye.svg",
+    "fact": "Yemen's capital is Sana'a."
+  },
+  {
+    "name": "Zambia",
+    "code": "ZM",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "flag": "assets/flags/zm.svg",
+    "fact": "Zambia's capital is Lusaka."
+  },
+  {
+    "name": "Zimbabwe",
+    "code": "ZW",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "flag": "assets/flags/zw.svg",
+    "fact": "Zimbabwe's capital is Harare."
+  }
+]
