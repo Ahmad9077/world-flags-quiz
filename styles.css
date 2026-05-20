@@ -72,10 +72,10 @@ button {
   position: relative;
   display: grid;
   grid-template-rows: minmax(0, 1fr);
-  width: min(1180px, calc(100% - 32px));
+  width: min(1240px, calc(100% - 18px));
   min-height: 100dvh;
   margin: 0 auto;
-  padding: 18px 0;
+  padding: 9px 0;
 }
 
 .eyebrow,
@@ -120,9 +120,9 @@ p {
 .quiz-card {
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr) auto auto;
-  gap: 12px;
+  gap: 9px;
   min-height: 0;
-  padding: clamp(14px, 2.2vw, 24px);
+  padding: clamp(10px, 1.5vw, 18px);
 }
 
 .results-card {
@@ -173,8 +173,8 @@ p {
 
 .question-stage {
   display: grid;
-  grid-template-columns: minmax(260px, 0.95fr) minmax(300px, 1.05fr);
-  gap: clamp(14px, 2.5vw, 28px);
+  grid-template-columns: minmax(320px, 1.28fr) minmax(300px, 0.92fr);
+  gap: clamp(10px, 1.6vw, 20px);
   align-items: stretch;
   min-height: 0;
 }
@@ -192,8 +192,9 @@ p {
 }
 
 .flag-frame img {
-  width: min(92%, 560px);
-  max-height: min(42dvh, 390px);
+  width: min(98%, 760px);
+  height: calc(100% - 18px);
+  max-height: none;
   border-radius: 12px;
   box-shadow: 0 18px 44px rgba(49, 65, 60, 0.18);
   object-fit: contain;
@@ -475,13 +476,13 @@ p {
 
 @media (max-width: 900px) {
   .app-shell {
-    width: min(100% - 22px, 720px);
-    padding: 12px 0;
+    width: min(100% - 12px, 720px);
+    padding: 6px 0;
   }
 
   .quiz-card {
-    gap: 9px;
-    padding: 12px;
+    gap: 7px;
+    padding: 8px;
   }
 
   .quiz-topline h2 {
@@ -490,20 +491,20 @@ p {
 
   .question-stage {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(210px, 1fr) minmax(230px, 0.95fr);
-    gap: 10px;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 7px;
   }
 
   .flag-frame img {
-    width: min(94%, 600px);
-    max-height: 31dvh;
+    width: min(99%, 680px);
+    height: calc(100% - 12px);
   }
 
   .option-button {
-    min-height: 50px;
-    padding: 9px 10px;
-    border-radius: 14px;
-    font-size: 0.92rem;
+    min-height: 46px;
+    padding: 8px 10px;
+    border-radius: 13px;
+    font-size: 0.9rem;
   }
 
   .answer-face {
@@ -513,9 +514,9 @@ p {
   }
 
   .feedback {
-    min-height: 44px;
-    padding: 8px 10px;
-    font-size: 0.83rem;
+    min-height: 38px;
+    padding: 7px 10px;
+    font-size: 0.8rem;
   }
 
   .primary-button,
@@ -536,8 +537,8 @@ p {
 
 @media (max-width: 430px) {
   .app-shell {
-    width: calc(100% - 16px);
-    padding: 8px 0;
+    width: calc(100% - 8px);
+    padding: 4px 0;
   }
 
   .question-label {
@@ -551,14 +552,6 @@ p {
 
   .score-pill span:first-child {
     font-size: 1.05rem;
-  }
-
-  .question-stage {
-    grid-template-rows: minmax(190px, 1fr) minmax(216px, 0.95fr);
-  }
-
-  .flag-frame img {
-    max-height: 29dvh;
   }
 
   .actions-row {
@@ -575,12 +568,9 @@ p {
 }
 
 @media (max-height: 740px) {
-  .flag-frame img {
-    max-height: 25dvh;
-  }
-
   .option-button {
-    min-height: 45px;
+    min-height: 42px;
+    padding-block: 6px;
   }
 }
 
