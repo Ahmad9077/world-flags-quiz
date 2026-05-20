@@ -242,6 +242,12 @@ p {
   cursor: default;
 }
 
+.option-button[aria-pressed="true"] {
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 6px;
+  padding-block: 8px;
+}
+
 .option-text {
   min-width: 0;
   overflow-wrap: anywhere;
@@ -249,9 +255,9 @@ p {
 }
 
 .answer-face {
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
+  width: clamp(100px, 52%, 150px);
+  aspect-ratio: 1;
+  border-radius: 18px;
   object-fit: cover;
   box-shadow: 0 8px 18px rgba(49, 65, 60, 0.18);
   animation: popIn 220ms ease both;
@@ -519,9 +525,8 @@ p {
   }
 
   .answer-face {
-    width: 42px;
-    height: 42px;
-    border-radius: 11px;
+    width: clamp(68px, 48%, 86px);
+    border-radius: 15px;
   }
 
   .feedback {
@@ -579,6 +584,10 @@ p {
 }
 
 @media (max-height: 740px) {
+  .quiz-card {
+    gap: 5px;
+  }
+
   .option-button {
     min-height: 105px;
     padding-block: 6px;
@@ -589,8 +598,18 @@ p {
   }
 
   .answer-face {
-    width: 36px;
-    height: 36px;
+    width: clamp(58px, 46%, 72px);
+    border-radius: 13px;
+  }
+
+  .feedback {
+    min-height: 34px;
+    padding-block: 5px;
+  }
+
+  .primary-button,
+  .ghost-button {
+    min-height: 38px;
   }
 }
 
