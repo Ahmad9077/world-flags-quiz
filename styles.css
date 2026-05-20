@@ -243,15 +243,25 @@ p {
 }
 
 .option-button[aria-pressed="true"] {
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: 6px;
-  padding-block: 8px;
+  grid-template-columns: minmax(0, 0.72fr) minmax(84px, 1fr);
+  grid-template-rows: 1fr;
+  gap: 8px;
+  padding: 8px;
+  text-align: left;
+  place-items: center;
 }
 
 .option-text {
   min-width: 0;
   overflow-wrap: anywhere;
   line-height: 1.22;
+}
+
+.option-button[aria-pressed="true"] .option-text {
+  justify-self: stretch;
+  font-size: 0.86em;
+  line-height: 1.14;
+  text-align: left;
 }
 
 .answer-face {
@@ -519,13 +529,24 @@ p {
     font-size: 0.86rem;
   }
 
+  .option-button[aria-pressed="true"] {
+    grid-template-columns: minmax(0, 0.42fr) minmax(96px, 1fr);
+    gap: 7px;
+    padding: 8px;
+  }
+
+  .option-button[aria-pressed="true"] .option-text {
+    font-size: 0.78em;
+    line-height: 1.08;
+  }
+
   .options-grid {
     grid-template-rows: repeat(2, minmax(120px, 1fr));
     gap: 7px;
   }
 
   .answer-face {
-    width: clamp(68px, 48%, 86px);
+    width: min(100%, 112px);
     border-radius: 15px;
   }
 
@@ -598,7 +619,7 @@ p {
   }
 
   .answer-face {
-    width: clamp(58px, 46%, 72px);
+    width: min(100%, 98px);
     border-radius: 13px;
   }
 
