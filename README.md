@@ -57,8 +57,9 @@ https://Ahmad9077.github.io/world-flags-quiz/
 - Smart distractor generation
 - 15-question sessions with no repeated countries
 - Locked answers with instant visual feedback
+- Local reaction images for correct and wrong selected answers
 - Animated progress indicator
-- Score tracker and review screen
-- Responsive premium dark theme
+- Score tracker and professional result dashboard
+- Responsive calm premium theme
 - Keyboard shortcuts: `1` to `4` choose answers, `Enter` or `Space` advances after locking
 - GitHub Pages compatible

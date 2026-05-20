@@ -16,7 +16,14 @@ const elements = {
   resultMessage: document.querySelector("#result-message"),
   finalScore: document.querySelector("#final-score"),
   finalPercent: document.querySelector("#final-percent"),
+  resultGauge: document.querySelector("#result-gauge"),
+  scoreGrade: document.querySelector("#score-grade"),
   reviewList: document.querySelector("#review-list")
+};
+
+const feedbackImages = {
+  happy: "assets/feedback/happy-boy.jpg",
+  sad: "assets/feedback/sad-girl.jpg"
 };
 
 const confusionGroups = [
@@ -75,6 +82,7 @@ function startQuiz() {
   score = 0;
   locked = false;
   answers = [];
+  document.body.classList.add("quiz-active");
   elements.resultsCard.hidden = true;
   elements.quizCard.hidden = false;
   renderQuestion();
@@ -131,7 +139,7 @@ function renderQuestion() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "option-button";
-    button.textContent = option.name;
+    button.innerHTML = `<span class="option-text">${option.name}</span>`;
     button.dataset.code = option.code;
     button.setAttribute("aria-label", `Option ${index + 1}: ${option.name}`);
     button.addEventListener("click", () => chooseAnswer(option.code));
@@ -159,7 +167,14 @@ function chooseAnswer(selectedCode) {
     button.disabled = true;
     if (isCorrectButton) button.classList.add("correct");
     if (isChosenWrong) button.classList.add("wrong");
-    if (button.dataset.code === selectedCode) button.setAttribute("aria-pressed", "true");
+    if (button.dataset.code === selectedCode) {
+      button.setAttribute("aria-pressed", "true");
+      const image = document.createElement("img");
+      image.className = "answer-face";
+      image.src = isCorrect ? feedbackImages.happy : feedbackImages.sad;
+      image.alt = isCorrect ? "Happy reaction for a correct answer" : "Sad reaction for a wrong answer";
+      button.append(image);
+    }
   });
 
   elements.scoreValue.textContent = score;
@@ -187,9 +202,12 @@ function showResults() {
   const percent = Math.round((score / QUESTION_COUNT) * 100);
   elements.quizCard.hidden = true;
   elements.resultsCard.hidden = false;
+  document.body.classList.remove("quiz-active");
   elements.resultTitle.textContent = `${score} out of ${QUESTION_COUNT}`;
   elements.finalScore.textContent = score;
   elements.finalPercent.textContent = `${percent}%`;
+  elements.resultGauge.style.setProperty("--score-angle", `${percent * 3.6}deg`);
+  elements.scoreGrade.textContent = getScoreGrade(percent);
   elements.resultMessage.textContent = getPerformanceMessage(percent);
   elements.reviewList.innerHTML = "";
 
@@ -206,6 +224,14 @@ function showResults() {
     `;
     elements.reviewList.append(row);
   });
+}
+
+function getScoreGrade(percent) {
+  if (percent === 100) return "A+";
+  if (percent >= 80) return "A";
+  if (percent >= 60) return "B";
+  if (percent >= 40) return "C";
+  return "Practice";
 }
 
 function getPerformanceMessage(percent) {
