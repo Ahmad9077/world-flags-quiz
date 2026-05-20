@@ -203,23 +203,27 @@ p {
 
 .options-grid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(104px, 1fr));
   gap: 10px;
-  align-content: center;
+  align-content: stretch;
+  min-height: 0;
 }
 
 .option-button {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: center;
-  min-height: 58px;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 8px;
+  place-items: center;
+  min-height: 104px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.74);
   color: var(--ink);
-  padding: 12px 14px;
-  text-align: left;
+  padding: 14px;
+  text-align: center;
   font-weight: 850;
   cursor: pointer;
   box-shadow: 0 10px 24px rgba(49, 65, 60, 0.05);
@@ -240,6 +244,8 @@ p {
 
 .option-text {
   min-width: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.22;
 }
 
 .answer-face {
@@ -501,16 +507,21 @@ p {
   }
 
   .option-button {
-    min-height: 46px;
+    min-height: 120px;
     padding: 8px 10px;
     border-radius: 13px;
-    font-size: 0.9rem;
+    font-size: 0.86rem;
+  }
+
+  .options-grid {
+    grid-template-rows: repeat(2, minmax(120px, 1fr));
+    gap: 7px;
   }
 
   .answer-face {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
   }
 
   .feedback {
@@ -569,8 +580,17 @@ p {
 
 @media (max-height: 740px) {
   .option-button {
-    min-height: 42px;
+    min-height: 105px;
     padding-block: 6px;
+  }
+
+  .options-grid {
+    grid-template-rows: repeat(2, minmax(105px, 1fr));
+  }
+
+  .answer-face {
+    width: 36px;
+    height: 36px;
   }
 }
 
