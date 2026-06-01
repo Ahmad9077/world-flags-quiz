@@ -242,35 +242,10 @@ p {
   cursor: default;
 }
 
-.option-button[aria-pressed="true"] {
-  grid-template-columns: minmax(0, 0.72fr) minmax(84px, 1fr);
-  grid-template-rows: 1fr;
-  gap: 8px;
-  padding: 8px;
-  text-align: left;
-  place-items: center;
-}
-
 .option-text {
   min-width: 0;
   overflow-wrap: anywhere;
   line-height: 1.22;
-}
-
-.option-button[aria-pressed="true"] .option-text {
-  justify-self: stretch;
-  font-size: 0.86em;
-  line-height: 1.14;
-  text-align: left;
-}
-
-.answer-face {
-  width: clamp(100px, 52%, 150px);
-  aspect-ratio: 1;
-  border-radius: 18px;
-  object-fit: cover;
-  box-shadow: 0 8px 18px rgba(49, 65, 60, 0.18);
-  animation: popIn 220ms ease both;
 }
 
 .option-button.correct {
@@ -529,25 +504,9 @@ p {
     font-size: 0.86rem;
   }
 
-  .option-button[aria-pressed="true"] {
-    grid-template-columns: minmax(0, 0.42fr) minmax(96px, 1fr);
-    gap: 7px;
-    padding: 8px;
-  }
-
-  .option-button[aria-pressed="true"] .option-text {
-    font-size: 0.78em;
-    line-height: 1.08;
-  }
-
   .options-grid {
     grid-template-rows: repeat(2, minmax(120px, 1fr));
     gap: 7px;
-  }
-
-  .answer-face {
-    width: min(100%, 112px);
-    border-radius: 15px;
   }
 
   .feedback {
@@ -616,11 +575,6 @@ p {
 
   .options-grid {
     grid-template-rows: repeat(2, minmax(105px, 1fr));
-  }
-
-  .answer-face {
-    width: min(100%, 98px);
-    border-radius: 13px;
   }
 
   .feedback {

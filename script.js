@@ -21,11 +21,6 @@ const elements = {
   reviewList: document.querySelector("#review-list")
 };
 
-const feedbackImages = {
-  happy: "assets/feedback/happy-boy.jpg",
-  sad: "assets/feedback/sad-girl.jpg"
-};
-
 const confusionGroups = [
   ["RO", "TD", "AD", "MD"],
   ["ID", "MC", "PL", "SG"],
@@ -169,11 +164,6 @@ function chooseAnswer(selectedCode) {
     if (isChosenWrong) button.classList.add("wrong");
     if (button.dataset.code === selectedCode) {
       button.setAttribute("aria-pressed", "true");
-      const image = document.createElement("img");
-      image.className = "answer-face";
-      image.src = isCorrect ? feedbackImages.happy : feedbackImages.sad;
-      image.alt = isCorrect ? "Happy reaction for a correct answer" : "Sad reaction for a wrong answer";
-      button.append(image);
     }
   });
 
