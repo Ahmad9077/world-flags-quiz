@@ -55,7 +55,8 @@ let score = 0;
 let locked = false;
 let answers = [];
 
-init();
+const accessReady = window.QuizzesHubAccessReady || Promise.reject(new Error("Missing Quizzes Hub access guard."));
+accessReady.then(init).catch(showAccessMessage);
 
 async function init() {
   try {
@@ -66,6 +67,11 @@ async function init() {
     elements.quizCard.innerHTML = "<p>Could not load the local country dataset. Please refresh the page.</p>";
     console.error(error);
   }
+}
+
+function showAccessMessage() {
+  document.documentElement.dataset.quizAccess = "denied";
+  elements.quizCard.innerHTML = "<p>Please open this quiz from Quizzes Hub.</p>";
 }
 
 function startQuiz() {

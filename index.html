@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A premium interactive world flag quiz with 15-question sessions and smart country distractors.">
     <title>World Flags Quiz</title>
+    <script>document.documentElement.dataset.quizAccess = "checking";</script>
+    <style>html[data-quiz-access="checking"] body { visibility: hidden; }</style>
+    <noscript><meta http-equiv="refresh" content="0;url=https://ahmad9077.github.io/quizzes-hub/"></noscript>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -80,7 +83,8 @@
     </main>
 
     <script src="https://ahmad9077.github.io/quizzes-hub/config.js?v=4"></script>
-    <script src="https://ahmad9077.github.io/quizzes-hub/progress-client.js?v=4"></script>
+    <script src="https://ahmad9077.github.io/quizzes-hub/access-guard.js?v=1" data-quiz-id="world-flags"></script>
+    <script src="https://ahmad9077.github.io/quizzes-hub/progress-client.js?v=5"></script>
     <script src="script.js"></script>
   </body>
 </html>
