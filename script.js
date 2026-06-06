@@ -214,6 +214,14 @@ function showResults() {
     `;
     elements.reviewList.append(row);
   });
+
+  window.QuizzesHubProgress?.record({
+    quizId: "world-flags",
+    score,
+    total: QUESTION_COUNT,
+    level: getScoreGrade(percent),
+    details: { percent, answers: answers.map(answer => ({ correct: answer.correct, country: answer.country.name })) }
+  });
 }
 
 function getScoreGrade(percent) {
