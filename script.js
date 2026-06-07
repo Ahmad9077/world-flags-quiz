@@ -4,6 +4,10 @@ const difficultySettings = {
   hard: { label: "Hard", questionCount: 20, optionCount: 4 }
 };
 
+const QUIZ_ID = "world-flags";
+const SESSION_STORAGE_KEY = `${QUIZ_ID}:active-session:v1`;
+const ADAPTIVE_READY_TIMEOUT_MS = 3000;
+
 const elements = {
   quizCard: document.querySelector("#quiz-card"),
   resultsCard: document.querySelector("#results-card"),
@@ -15,7 +19,6 @@ const elements = {
   options: document.querySelector("#options"),
   feedback: document.querySelector("#feedback"),
   nextButton: document.querySelector("#next-button"),
-  restartButton: document.querySelector("#restart-button"),
   playAgainButton: document.querySelector("#play-again-button"),
   resultTitle: document.querySelector("#result-title"),
   resultMessage: document.querySelector("#result-message"),
@@ -74,6 +77,7 @@ async function init() {
   try {
     const response = await fetch("countries.json");
     countries = await response.json();
+    await waitForAdaptiveReady();
     startQuiz();
   } catch (error) {
     elements.quizCard.innerHTML = "<p>Could not load the local country dataset. Please refresh the page.</p>";
@@ -87,7 +91,10 @@ function showAccessMessage() {
 }
 
 function startQuiz() {
-  quiz = shuffle([...countries]).slice(0, quizSettings.questionCount).map(country => ({
+  if (restoreSession()) return;
+
+  quiz = selectQuestionCountries().map(country => ({
+    key: country.code,
     country,
     options: buildOptions(country)
   }));
@@ -98,7 +105,22 @@ function startQuiz() {
   document.body.classList.add("quiz-active");
   elements.resultsCard.hidden = true;
   elements.quizCard.hidden = false;
+  saveSession();
   renderQuestion();
+}
+
+function startNewQuiz() {
+  clearSession();
+  startQuiz();
+}
+
+function selectQuestionCountries() {
+  const allQuestions = countries.map(country => ({ key: country.code, country }));
+  const adaptiveQuestions = window.QuizzesHubAdaptive?.selectQuestions?.(allQuestions, quizSettings.questionCount);
+  if (Array.isArray(adaptiveQuestions) && adaptiveQuestions.length > 0) {
+    return adaptiveQuestions.map(question => question.country).filter(Boolean);
+  }
+  return shuffle([...countries]).slice(0, quizSettings.questionCount);
 }
 
 function buildOptions(correct) {
@@ -136,29 +158,51 @@ function distractorScore(correct, candidate) {
 
 function renderQuestion() {
   const item = quiz[currentIndex];
-  locked = false;
-  elements.questionLabel.textContent = `${quizSettings.label} · Question ${currentIndex + 1} of ${quizSettings.questionCount}`;
+  const savedAnswer = answers[currentIndex];
+  locked = Boolean(savedAnswer);
+  elements.questionLabel.textContent = `Question ${currentIndex + 1} of ${quizSettings.questionCount}`;
   elements.scoreValue.textContent = score;
   elements.scoreTotalValue.textContent = `/ ${quizSettings.questionCount}`;
-  elements.progressBar.style.width = `${(currentIndex / quizSettings.questionCount) * 100}%`;
+  elements.progressBar.style.width = `${((currentIndex + (savedAnswer ? 1 : 0)) / quizSettings.questionCount) * 100}%`;
   elements.flagImage.src = item.country.flag;
   elements.flagImage.alt = `Flag for question ${currentIndex + 1}`;
   elements.feedback.hidden = true;
-  elements.feedback.innerHTML = "";
-  elements.nextButton.disabled = true;
-  elements.nextButton.textContent = "Choose an answer";
-  elements.options.innerHTML = "";
+  elements.feedback.replaceChildren();
+  elements.nextButton.disabled = !savedAnswer;
+  elements.nextButton.textContent = savedAnswer
+    ? currentIndex === quizSettings.questionCount - 1 ? "Show Results" : "Next Question"
+    : "Choose an answer";
+  elements.options.replaceChildren();
 
   item.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "option-button";
-    button.innerHTML = `<span class="option-text">${option.name}</span>`;
+    const label = document.createElement("span");
+    label.className = "option-text";
+    label.textContent = option.name;
+    button.append(label);
     button.dataset.code = option.code;
     button.setAttribute("aria-label", `Option ${index + 1}: ${option.name}`);
     button.addEventListener("click", () => chooseAnswer(option.code));
+
+    if (savedAnswer) {
+      const isCorrectButton = option.code === item.country.code;
+      const isChosenWrong = option.code === savedAnswer.selected.code && !savedAnswer.correct;
+      button.disabled = true;
+      if (isCorrectButton) button.classList.add("correct");
+      if (isChosenWrong) button.classList.add("wrong");
+      if (option.code === savedAnswer.selected.code) {
+        button.setAttribute("aria-pressed", "true");
+      }
+    }
+
     elements.options.append(button);
   });
+
+  if (savedAnswer) {
+    renderFeedback(savedAnswer.correct, item.country);
+  }
 }
 
 function chooseAnswer(selectedCode) {
@@ -170,6 +214,7 @@ function chooseAnswer(selectedCode) {
   if (isCorrect) score += 1;
 
   answers.push({
+    questionKey: item.key,
     country: item.country,
     selected: countries.find(country => country.code === selectedCode),
     correct: isCorrect
@@ -188,12 +233,11 @@ function chooseAnswer(selectedCode) {
 
   elements.scoreValue.textContent = score;
   elements.feedback.hidden = false;
-  elements.feedback.innerHTML = isCorrect
-    ? `<strong>Correct.</strong> ${item.country.fact}`
-    : `<strong>Wrong.</strong> The correct answer is <strong>${item.country.name}</strong>. ${item.country.fact}`;
+  renderFeedback(isCorrect, item.country);
   elements.nextButton.disabled = false;
   elements.nextButton.textContent = currentIndex === quizSettings.questionCount - 1 ? "Show Results" : "Next Question";
   elements.progressBar.style.width = `${((currentIndex + 1) / quizSettings.questionCount) * 100}%`;
+  saveSession();
   elements.nextButton.focus();
 }
 
@@ -204,11 +248,13 @@ function nextQuestion() {
     return;
   }
   currentIndex += 1;
+  saveSession();
   renderQuestion();
 }
 
 function showResults() {
   const percent = Math.round((score / quizSettings.questionCount) * 100);
+  clearSession();
   elements.quizCard.hidden = true;
   elements.resultsCard.hidden = false;
   document.body.classList.remove("quiz-active");
@@ -235,8 +281,52 @@ function showResults() {
     elements.reviewList.append(row);
   });
 
-  window.QuizzesHubProgress?.record({
-    quizId: "world-flags",
+  void recordCompletedQuiz(percent);
+}
+
+function normalizeDifficulty(value) {
+  return Object.prototype.hasOwnProperty.call(difficultySettings, value) ? value : "medium";
+}
+
+function renderFeedback(isCorrect, country) {
+  elements.feedback.hidden = false;
+  elements.feedback.replaceChildren();
+
+  const status = document.createElement("strong");
+  status.textContent = isCorrect ? "Correct." : "Wrong.";
+  elements.feedback.append(status, " ");
+
+  if (!isCorrect) {
+    const countryName = document.createElement("strong");
+    countryName.textContent = country.name;
+    elements.feedback.append("The correct answer is ", countryName, ". ");
+  }
+
+  elements.feedback.append(country.fact);
+}
+
+async function recordCompletedQuiz(percent) {
+  await waitForAdaptiveReady();
+
+  let adaptiveRecorded = false;
+  if (window.QuizzesHubAdaptive?.recordAttempt) {
+    try {
+      const result = await window.QuizzesHubAdaptive.recordAttempt(
+        answers.map(answer => ({
+          question: { key: answer.questionKey || answer.country.code },
+          correct: answer.correct
+        }))
+      );
+      adaptiveRecorded = Boolean(result?.ok);
+    } catch (error) {
+      console.warn("Adaptive recording failed", error);
+    }
+  }
+
+  if (adaptiveRecorded) return;
+
+  await window.QuizzesHubProgress?.record({
+    quizId: QUIZ_ID,
     score,
     total: quizSettings.questionCount,
     level: getScoreGrade(percent),
@@ -244,6 +334,7 @@ function showResults() {
       difficulty: assignmentDifficulty,
       percent,
       answers: answers.map(answer => ({
+        key: answer.questionKey || answer.country.code,
         prompt: answer.country.name,
         expected: answer.country.name,
         selected: answer.selected.name,
@@ -253,8 +344,67 @@ function showResults() {
   });
 }
 
-function normalizeDifficulty(value) {
-  return Object.prototype.hasOwnProperty.call(difficultySettings, value) ? value : "medium";
+function waitForAdaptiveReady() {
+  if (!window.QuizzesHubAdaptiveReady) return Promise.resolve(null);
+  return Promise.race([
+    window.QuizzesHubAdaptiveReady.catch(() => null),
+    new Promise(resolve => setTimeout(() => resolve(null), ADAPTIVE_READY_TIMEOUT_MS))
+  ]);
+}
+
+function restoreSession() {
+  const session = loadSession();
+  if (!session || session.assignmentDifficulty !== assignmentDifficulty) return false;
+  if (!Array.isArray(session.quiz) || session.quiz.length === 0) return false;
+
+  quiz = session.quiz;
+  currentIndex = clampNumber(session.currentIndex, 0, quiz.length - 1);
+  score = clampNumber(session.score, 0, quiz.length);
+  answers = Array.isArray(session.answers) ? session.answers : [];
+  locked = Boolean(answers[currentIndex]);
+
+  document.body.classList.add("quiz-active");
+  elements.resultsCard.hidden = true;
+  elements.quizCard.hidden = false;
+  renderQuestion();
+  return true;
+}
+
+function loadSession() {
+  try {
+    return JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) || "null");
+  } catch {
+    return null;
+  }
+}
+
+function saveSession() {
+  try {
+    localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify({
+      version: 1,
+      assignmentDifficulty,
+      quiz,
+      currentIndex,
+      score,
+      answers
+    }));
+  } catch {
+    // Storage can be unavailable in private browsing; the quiz still works.
+  }
+}
+
+function clearSession() {
+  try {
+    localStorage.removeItem(SESSION_STORAGE_KEY);
+  } catch {
+    // Ignore storage failures.
+  }
+}
+
+function clampNumber(value, min, max) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return min;
+  return Math.min(max, Math.max(min, number));
 }
 
 function getScoreGrade(percent) {
@@ -288,8 +438,7 @@ function sharedWords(a, b) {
 }
 
 elements.nextButton.addEventListener("click", nextQuestion);
-elements.restartButton.addEventListener("click", startQuiz);
-elements.playAgainButton.addEventListener("click", startQuiz);
+elements.playAgainButton.addEventListener("click", startNewQuiz);
 
 document.addEventListener("keydown", event => {
   if (event.key >= "1" && event.key <= "4" && !locked) {
