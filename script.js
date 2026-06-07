@@ -1,10 +1,15 @@
-const QUESTION_COUNT = 15;
+const difficultySettings = {
+  easy: { label: "Easy", questionCount: 10, optionCount: 3 },
+  medium: { label: "Medium", questionCount: 15, optionCount: 4 },
+  hard: { label: "Hard", questionCount: 20, optionCount: 4 }
+};
 
 const elements = {
   quizCard: document.querySelector("#quiz-card"),
   resultsCard: document.querySelector("#results-card"),
   questionLabel: document.querySelector("#question-label"),
   scoreValue: document.querySelector("#score-value"),
+  scoreTotalValue: document.querySelector("#score-total-value"),
   progressBar: document.querySelector("#progress-bar"),
   flagImage: document.querySelector("#flag-image"),
   options: document.querySelector("#options"),
@@ -15,6 +20,7 @@ const elements = {
   resultTitle: document.querySelector("#result-title"),
   resultMessage: document.querySelector("#result-message"),
   finalScore: document.querySelector("#final-score"),
+  finalTotal: document.querySelector("#final-total"),
   finalPercent: document.querySelector("#final-percent"),
   resultGauge: document.querySelector("#result-gauge"),
   scoreGrade: document.querySelector("#score-grade"),
@@ -54,9 +60,15 @@ let currentIndex = 0;
 let score = 0;
 let locked = false;
 let answers = [];
+let quizSettings = difficultySettings.medium;
+let assignmentDifficulty = "medium";
 
 const accessReady = window.QuizzesHubAccessReady || Promise.reject(new Error("Missing Quizzes Hub access guard."));
-accessReady.then(init).catch(showAccessMessage);
+accessReady.then((access) => {
+  assignmentDifficulty = normalizeDifficulty(access?.difficulty);
+  quizSettings = difficultySettings[assignmentDifficulty];
+  init();
+}).catch(showAccessMessage);
 
 async function init() {
   try {
@@ -75,7 +87,7 @@ function showAccessMessage() {
 }
 
 function startQuiz() {
-  quiz = shuffle([...countries]).slice(0, QUESTION_COUNT).map(country => ({
+  quiz = shuffle([...countries]).slice(0, quizSettings.questionCount).map(country => ({
     country,
     options: buildOptions(country)
   }));
@@ -100,7 +112,7 @@ function buildOptions(correct) {
     .sort((a, b) => b.score - a.score);
 
   for (const item of ranked) {
-    if (selected.size >= 4) break;
+    if (selected.size >= quizSettings.optionCount) break;
     selected.set(item.country.code, item.country);
   }
 
@@ -125,9 +137,10 @@ function distractorScore(correct, candidate) {
 function renderQuestion() {
   const item = quiz[currentIndex];
   locked = false;
-  elements.questionLabel.textContent = `Question ${currentIndex + 1} of ${QUESTION_COUNT}`;
+  elements.questionLabel.textContent = `${quizSettings.label} · Question ${currentIndex + 1} of ${quizSettings.questionCount}`;
   elements.scoreValue.textContent = score;
-  elements.progressBar.style.width = `${(currentIndex / QUESTION_COUNT) * 100}%`;
+  elements.scoreTotalValue.textContent = `/ ${quizSettings.questionCount}`;
+  elements.progressBar.style.width = `${(currentIndex / quizSettings.questionCount) * 100}%`;
   elements.flagImage.src = item.country.flag;
   elements.flagImage.alt = `Flag for question ${currentIndex + 1}`;
   elements.feedback.hidden = true;
@@ -179,14 +192,14 @@ function chooseAnswer(selectedCode) {
     ? `<strong>Correct.</strong> ${item.country.fact}`
     : `<strong>Wrong.</strong> The correct answer is <strong>${item.country.name}</strong>. ${item.country.fact}`;
   elements.nextButton.disabled = false;
-  elements.nextButton.textContent = currentIndex === QUESTION_COUNT - 1 ? "Show Results" : "Next Question";
-  elements.progressBar.style.width = `${((currentIndex + 1) / QUESTION_COUNT) * 100}%`;
+  elements.nextButton.textContent = currentIndex === quizSettings.questionCount - 1 ? "Show Results" : "Next Question";
+  elements.progressBar.style.width = `${((currentIndex + 1) / quizSettings.questionCount) * 100}%`;
   elements.nextButton.focus();
 }
 
 function nextQuestion() {
   if (!locked) return;
-  if (currentIndex === QUESTION_COUNT - 1) {
+  if (currentIndex === quizSettings.questionCount - 1) {
     showResults();
     return;
   }
@@ -195,12 +208,13 @@ function nextQuestion() {
 }
 
 function showResults() {
-  const percent = Math.round((score / QUESTION_COUNT) * 100);
+  const percent = Math.round((score / quizSettings.questionCount) * 100);
   elements.quizCard.hidden = true;
   elements.resultsCard.hidden = false;
   document.body.classList.remove("quiz-active");
-  elements.resultTitle.textContent = `${score} out of ${QUESTION_COUNT}`;
+  elements.resultTitle.textContent = `${score} out of ${quizSettings.questionCount}`;
   elements.finalScore.textContent = score;
+  elements.finalTotal.textContent = quizSettings.questionCount;
   elements.finalPercent.textContent = `${percent}%`;
   elements.resultGauge.style.setProperty("--score-angle", `${percent * 3.6}deg`);
   elements.scoreGrade.textContent = getScoreGrade(percent);
@@ -224,9 +238,10 @@ function showResults() {
   window.QuizzesHubProgress?.record({
     quizId: "world-flags",
     score,
-    total: QUESTION_COUNT,
+    total: quizSettings.questionCount,
     level: getScoreGrade(percent),
     details: {
+      difficulty: assignmentDifficulty,
       percent,
       answers: answers.map(answer => ({
         prompt: answer.country.name,
@@ -236,6 +251,10 @@ function showResults() {
       }))
     }
   });
+}
+
+function normalizeDifficulty(value) {
+  return Object.prototype.hasOwnProperty.call(difficultySettings, value) ? value : "medium";
 }
 
 function getScoreGrade(percent) {
