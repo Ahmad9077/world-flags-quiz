@@ -7,6 +7,7 @@ const difficultySettings = {
 const QUIZ_ID = "world-flags";
 const SESSION_STORAGE_KEY = `${QUIZ_ID}:active-session:v1`;
 const ADAPTIVE_READY_TIMEOUT_MS = 3000;
+const isChallengeMode = Boolean(new URLSearchParams(window.location.search).get("challenge_session"));
 
 const elements = {
   quizCard: document.querySelector("#quiz-card"),
@@ -65,11 +66,14 @@ let locked = false;
 let answers = [];
 let quizSettings = difficultySettings.medium;
 let assignmentDifficulty = "medium";
+let challengeState = null;
+let challengeQuestion = null;
+let challengeAnswer = null;
 
 const accessReady = window.QuizzesHubAccessReady || Promise.reject(new Error("Missing Quizzes Hub access guard."));
 accessReady.then((access) => {
   assignmentDifficulty = normalizeDifficulty(access?.difficulty);
-  quizSettings = difficultySettings[assignmentDifficulty];
+  quizSettings = isChallengeMode ? difficultySettings.medium : difficultySettings[assignmentDifficulty];
   init();
 }).catch(showAccessMessage);
 
@@ -77,11 +81,30 @@ async function init() {
   try {
     const response = await fetch("countries.json");
     countries = await response.json();
+    if (isChallengeMode) {
+      await initChallengeMode();
+      return;
+    }
     await waitForAdaptiveReady();
     startQuiz();
   } catch (error) {
     elements.quizCard.innerHTML = "<p>Could not load the local country dataset. Please refresh the page.</p>";
     console.error(error);
+  }
+}
+
+async function initChallengeMode() {
+  try {
+    challengeState = await window.QuizzesHubChallengeReady;
+    window.QuizzesHubChallenge.onChange((state) => {
+      challengeState = state;
+      challengeAnswer = null;
+      renderChallengeQuestion();
+    });
+    renderChallengeQuestion();
+  } catch (error) {
+    console.error(error);
+    elements.quizCard.innerHTML = "<p>Could not open this challenge. Please return to Quizzes Hub.</p>";
   }
 }
 
@@ -110,8 +133,54 @@ function startQuiz() {
 }
 
 function startNewQuiz() {
+  if (isChallengeMode) {
+    window.QuizzesHubChallenge?.openHub?.();
+    return;
+  }
   clearSession();
   startQuiz();
+}
+
+function renderChallengeQuestion() {
+  if (!challengeState) return;
+
+  document.body.classList.add("quiz-active");
+  elements.resultsCard.hidden = true;
+  elements.quizCard.hidden = false;
+
+  if (challengeState.status === "finished") {
+    renderChallengeFinished();
+    return;
+  }
+
+  if (challengeState.status !== "active") {
+    elements.questionLabel.textContent = "Challenge Mode";
+    elements.scoreValue.textContent = getMyWrongCount();
+    elements.scoreTotalValue.textContent = "/ 3 wrong";
+    elements.progressBar.style.width = "0%";
+    elements.feedback.hidden = false;
+    elements.feedback.textContent = "Waiting for the challenge to start.";
+    elements.nextButton.disabled = false;
+    elements.nextButton.textContent = "Back to Hub";
+    elements.flagImage.removeAttribute("src");
+    elements.flagImage.alt = "";
+    elements.options.replaceChildren();
+    return;
+  }
+
+  const questionCountry = countries.find(country => country.code === challengeState.current_question_key);
+  if (!questionCountry) {
+    renderChallengeMissingQuestion();
+    return;
+  }
+
+  challengeQuestion = {
+    key: questionCountry.code,
+    country: questionCountry,
+    options: buildOptions(questionCountry)
+  };
+
+  renderQuestion();
 }
 
 function selectQuestionCountries() {
@@ -158,23 +227,33 @@ function distractorScore(correct, candidate) {
 
 function renderQuestion() {
   const item = quiz[currentIndex];
-  const savedAnswer = answers[currentIndex];
+  const activeItem = isChallengeMode ? challengeQuestion : item;
+  if (!activeItem) return;
+
+  const savedAnswer = isChallengeMode ? challengeAnswer : answers[currentIndex];
   locked = Boolean(savedAnswer);
-  elements.questionLabel.textContent = `Question ${currentIndex + 1} of ${quizSettings.questionCount}`;
-  elements.scoreValue.textContent = score;
-  elements.scoreTotalValue.textContent = `/ ${quizSettings.questionCount}`;
-  elements.progressBar.style.width = `${((currentIndex + (savedAnswer ? 1 : 0)) / quizSettings.questionCount) * 100}%`;
-  elements.flagImage.src = item.country.flag;
-  elements.flagImage.alt = `Flag for question ${currentIndex + 1}`;
+  const canAnswer = !isChallengeMode || window.QuizzesHubChallenge?.canAnswer?.();
+  elements.questionLabel.textContent = isChallengeMode
+    ? `Challenge question ${challengeState.current_turn_index + 1}`
+    : `Question ${currentIndex + 1} of ${quizSettings.questionCount}`;
+  elements.scoreValue.textContent = isChallengeMode ? getMyWrongCount() : score;
+  elements.scoreTotalValue.textContent = isChallengeMode ? "/ 3 wrong" : `/ ${quizSettings.questionCount}`;
+  elements.progressBar.style.width = isChallengeMode
+    ? `${Math.min(getMyWrongCount(), 3) / 3 * 100}%`
+    : `${((currentIndex + (savedAnswer ? 1 : 0)) / quizSettings.questionCount) * 100}%`;
+  elements.flagImage.src = activeItem.country.flag;
+  elements.flagImage.alt = `Flag for question ${isChallengeMode ? challengeState.current_turn_index + 1 : currentIndex + 1}`;
   elements.feedback.hidden = true;
   elements.feedback.replaceChildren();
-  elements.nextButton.disabled = !savedAnswer;
-  elements.nextButton.textContent = savedAnswer
+  elements.nextButton.disabled = isChallengeMode ? false : !savedAnswer;
+  elements.nextButton.textContent = isChallengeMode
+    ? "Back to Hub"
+    : savedAnswer
     ? currentIndex === quizSettings.questionCount - 1 ? "Show Results" : "Next Question"
     : "Choose an answer";
   elements.options.replaceChildren();
 
-  item.options.forEach((option, index) => {
+  activeItem.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "option-button";
@@ -185,9 +264,10 @@ function renderQuestion() {
     button.dataset.code = option.code;
     button.setAttribute("aria-label", `Option ${index + 1}: ${option.name}`);
     button.addEventListener("click", () => chooseAnswer(option.code));
+    button.disabled = isChallengeMode && !canAnswer;
 
     if (savedAnswer) {
-      const isCorrectButton = option.code === item.country.code;
+      const isCorrectButton = option.code === activeItem.country.code;
       const isChosenWrong = option.code === savedAnswer.selected.code && !savedAnswer.correct;
       button.disabled = true;
       if (isCorrectButton) button.classList.add("correct");
@@ -201,22 +281,47 @@ function renderQuestion() {
   });
 
   if (savedAnswer) {
-    renderFeedback(savedAnswer.correct, item.country);
+    renderFeedback(savedAnswer.correct, activeItem.country);
+  } else if (isChallengeMode) {
+    renderChallengeStatus();
   }
 }
 
-function chooseAnswer(selectedCode) {
+async function chooseAnswer(selectedCode) {
   if (locked) return;
   locked = true;
 
-  const item = quiz[currentIndex];
+  const item = isChallengeMode ? challengeQuestion : quiz[currentIndex];
+  if (!item) return;
+
   const isCorrect = selectedCode === item.country.code;
+  const selectedCountry = countries.find(country => country.code === selectedCode);
+  if (isChallengeMode) {
+    challengeAnswer = {
+      questionKey: item.key,
+      country: item.country,
+      selected: selectedCountry,
+      correct: isCorrect
+    };
+    renderQuestion();
+    const result = await window.QuizzesHubChallenge.submitAnswer({
+      answerText: selectedCountry?.name || selectedCode,
+      isCorrect
+    });
+    if (!result.ok) {
+      locked = false;
+      elements.feedback.hidden = false;
+      elements.feedback.textContent = result.reason || "Could not submit answer.";
+    }
+    return;
+  }
+
   if (isCorrect) score += 1;
 
   answers.push({
     questionKey: item.key,
     country: item.country,
-    selected: countries.find(country => country.code === selectedCode),
+    selected: selectedCountry,
     correct: isCorrect
   });
 
@@ -242,6 +347,10 @@ function chooseAnswer(selectedCode) {
 }
 
 function nextQuestion() {
+  if (isChallengeMode) {
+    window.QuizzesHubChallenge?.openHub?.();
+    return;
+  }
   if (!locked) return;
   if (currentIndex === quizSettings.questionCount - 1) {
     showResults();
@@ -306,6 +415,7 @@ function renderFeedback(isCorrect, country) {
 }
 
 async function recordCompletedQuiz(percent) {
+  if (isChallengeMode) return;
   await waitForAdaptiveReady();
 
   let adaptiveRecorded = false;
@@ -345,11 +455,66 @@ async function recordCompletedQuiz(percent) {
 }
 
 function waitForAdaptiveReady() {
+  if (isChallengeMode) return Promise.resolve(null);
   if (!window.QuizzesHubAdaptiveReady) return Promise.resolve(null);
   return Promise.race([
     window.QuizzesHubAdaptiveReady.catch(() => null),
     new Promise(resolve => setTimeout(() => resolve(null), ADAPTIVE_READY_TIMEOUT_MS))
   ]);
+}
+
+function renderChallengeStatus() {
+  elements.feedback.hidden = false;
+  elements.feedback.replaceChildren();
+
+  const lastTurn = challengeState?.last_turn;
+  if (lastTurn) {
+    const lastPlayer = (challengeState.players || []).find(player => player.user_id === lastTurn.answering_player_id);
+    const result = document.createElement("strong");
+    result.textContent = lastTurn.is_correct ? "Correct." : "Wrong.";
+    elements.feedback.append(lastPlayer?.display_name || "Player", " answered: ", result);
+  } else {
+    elements.feedback.textContent = "Challenge is live.";
+  }
+
+  if (!window.QuizzesHubChallenge?.canAnswer?.()) {
+    const currentPlayer = (challengeState.players || []).find(player => player.user_id === challengeState.current_answering_user_id);
+    elements.feedback.append(" Waiting for ", currentPlayer?.display_name || "the other player", ".");
+  }
+}
+
+function renderChallengeFinished() {
+  const winner = (challengeState.players || []).find(player => player.user_id === challengeState.winner_id);
+  elements.questionLabel.textContent = "Challenge complete";
+  elements.scoreValue.textContent = getMyWrongCount();
+  elements.scoreTotalValue.textContent = "/ 3 wrong";
+  elements.progressBar.style.width = "100%";
+  elements.flagImage.removeAttribute("src");
+  elements.flagImage.alt = "";
+  elements.options.replaceChildren();
+  elements.feedback.hidden = false;
+  elements.feedback.textContent = winner ? `${winner.display_name} wins.` : "Challenge finished.";
+  elements.nextButton.disabled = false;
+  elements.nextButton.textContent = "Back to Hub";
+}
+
+function renderChallengeMissingQuestion() {
+  elements.questionLabel.textContent = "Challenge Mode";
+  elements.scoreValue.textContent = getMyWrongCount();
+  elements.scoreTotalValue.textContent = "/ 3 wrong";
+  elements.progressBar.style.width = "0%";
+  elements.flagImage.removeAttribute("src");
+  elements.flagImage.alt = "";
+  elements.options.replaceChildren();
+  elements.feedback.hidden = false;
+  elements.feedback.textContent = "This challenge question is not available in this quiz version.";
+  elements.nextButton.disabled = false;
+  elements.nextButton.textContent = "Back to Hub";
+}
+
+function getMyWrongCount() {
+  const me = (challengeState?.players || []).find(player => player.user_id === window.QuizzesHubChallenge?.currentUserId);
+  return me?.wrong_count || 0;
 }
 
 function restoreSession() {
