@@ -192,7 +192,7 @@ function renderChallengeQuestion() {
   challengeQuestion = {
     key: questionCountry.code,
     country: questionCountry,
-    options: buildOptions(questionCountry)
+    options: buildChallengeOptions(questionCountry, challengeState.current_turn_index)
   };
 
   renderQuestion();
@@ -249,7 +249,7 @@ function renderQuestion() {
   locked = Boolean(savedAnswer);
   const canAnswer = !isChallengeMode || window.QuizzesHubChallenge?.canAnswer?.();
   elements.questionLabel.textContent = isChallengeMode
-    ? `Challenge question ${challengeState.current_turn_index + 1}`
+    ? `${getChallengeTurnLabel()} · Question ${challengeState.current_turn_index + 1}`
     : `Question ${currentIndex + 1} of ${quizSettings.questionCount}`;
   elements.scoreValue.textContent = isChallengeMode ? getChallengeScoreText() : score;
   elements.scoreTotalValue.textContent = isChallengeMode ? "" : `/ ${quizSettings.questionCount}`;
@@ -495,7 +495,7 @@ function renderChallengeStatus() {
 
   if (!window.QuizzesHubChallenge?.canAnswer?.()) {
     const currentPlayer = (challengeState.players || []).find(player => player.user_id === challengeState.current_answering_user_id);
-    elements.feedback.append(" Waiting for ", currentPlayer?.display_name || "the other player", ".");
+    elements.feedback.append(" Turn: ", currentPlayer?.display_name || "the other player", ".");
   }
 }
 
@@ -543,7 +543,7 @@ function renderChallengeAnswerReveal(state) {
       challengeRevealTimer = null;
       challengeAnswer = null;
       renderChallengeQuestion();
-    }, 2000);
+    }, 3000);
     return;
   }
 
@@ -555,7 +555,7 @@ function renderChallengeAnswerReveal(state) {
   challengeQuestion = {
     key: country.code,
     country,
-    options: buildRevealOptions(country, selected)
+    options: buildChallengeOptions(country, lastTurn.turn_index, selected)
   };
   challengeAnswer = {
     questionKey: country.code,
@@ -569,16 +569,14 @@ function renderChallengeAnswerReveal(state) {
     challengeRevealTimer = null;
     challengeAnswer = null;
     renderChallengeQuestion();
-  }, 2000);
+  }, 3000);
 }
 
-function buildRevealOptions(correct, selected) {
-  const options = new Map([[correct.code, correct]]);
-  if (selected?.code) options.set(selected.code, selected);
-  buildOptions(correct).forEach(option => {
-    if (options.size < quizSettings.optionCount) options.set(option.code, option);
-  });
-  return [...options.values()];
+function buildChallengeOptions(correct, turnIndex, selected = null) {
+  const seed = `${QUIZ_ID}:${correct.code}:${turnIndex}`;
+  const options = withSeededRandom(seed, () => buildOptions(correct));
+  if (!selected?.code || options.some(option => option.code === selected.code)) return options;
+  return [...options.slice(0, -1), selected];
 }
 
 function appendChallengeSelectedAnswer(savedAnswer) {
@@ -593,9 +591,41 @@ function getChallengeScoreText() {
   return players.map(player => `${player.display_name}: ${player.wrong_count}/3`).join(" · ");
 }
 
+function getChallengeTurnLabel() {
+  const currentPlayer = (challengeState?.players || []).find(player => player.user_id === challengeState.current_answering_user_id);
+  if (!currentPlayer) return "Challenge";
+  return currentPlayer.user_id === window.QuizzesHubChallenge?.currentUserId
+    ? "Your turn"
+    : `${currentPlayer.display_name}'s turn`;
+}
+
 function getChallengeTurnId(turn) {
   if (!turn) return null;
   return `${turn.turn_index}:${turn.answering_player_id}:${turn.answered_at || ""}`;
+}
+
+function withSeededRandom(seedText, callback) {
+  const originalRandom = Math.random;
+  let seed = 2166136261;
+
+  for (let index = 0; index < seedText.length; index += 1) {
+    seed ^= seedText.charCodeAt(index);
+    seed = Math.imul(seed, 16777619);
+  }
+
+  Math.random = () => {
+    seed += 0x6D2B79F5;
+    let value = seed;
+    value = Math.imul(value ^ value >>> 15, value | 1);
+    value ^= value + Math.imul(value ^ value >>> 7, value | 61);
+    return ((value ^ value >>> 14) >>> 0) / 4294967296;
+  };
+
+  try {
+    return callback();
+  } finally {
+    Math.random = originalRandom;
+  }
 }
 
 function restoreSession() {
